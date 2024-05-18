@@ -1,23 +1,23 @@
 package com.app.rightfix.dao;
 
-import com.app.rightfix.Entities.RepairShop;
+import com.app.rightfix.Entities.Address;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class RepairShopDAOImpl implements RepairShopDAO{
+public class AddressDAOImpl implements AddressDAO{
     private EntityManager entityManager;
 
     @Autowired
-    public RepairShopDAOImpl(EntityManager entityManager) {
+    public AddressDAOImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
     @Override
     @Transactional
-    public void save(RepairShop repairShop) {
-        entityManager.persist(repairShop);
+    public void save(Address address) {
+        entityManager.persist(address);
     }
 }

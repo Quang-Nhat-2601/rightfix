@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -22,7 +23,7 @@ public class RepairShop {
     @Column(name = "name")
     private String name;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="address_id")
     private Address address;
 
@@ -38,10 +39,16 @@ public class RepairShop {
             CascadeType.PERSIST,
             CascadeType.REFRESH
     })
-    private List<RepairHistory> repairHistoryList;
+    private List<RepairHistory> repairHistoryList = Collections.emptyList();
 
     public RepairShop(String name) {
         this.name = name;
         this.deleteFlag = false;
+    }
+
+    // set up bidirectional relationship
+    public void add(RepairHistory repairHistory) {
+        this.repairHistoryList.add(repairHistory);
+        repairHistory.setRepairShop(this);
     }
 }

@@ -15,10 +15,20 @@ public class RepairHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH
+    })
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH
+    })
     @JoinColumn(name = "repair_shop_id", nullable = false)
     private RepairShop repairShop;
     @Column(name = "item_fix")
@@ -33,4 +43,15 @@ public class RepairHistory {
     private Instant createdAt;
     @Column(name="delete_flag")
     private Boolean deleteFlag;
+
+    public RepairHistory(User user, RepairShop repairShop, String itemFix, Boolean isNewItem, double cost, Instant dateFix) {
+        this.user = user;
+        this.repairShop = repairShop;
+        this.itemFix = itemFix;
+        this.isNewItem = isNewItem;
+        this.cost = cost;
+        this.dateFix = dateFix;
+        this.deleteFlag = false;
+        this.createdAt = Instant.now();
+    }
 }

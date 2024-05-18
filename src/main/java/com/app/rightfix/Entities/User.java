@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -47,7 +48,7 @@ public class User {
             CascadeType.PERSIST,
             CascadeType.REFRESH
     })
-    private List<RepairHistory> repairHistoryList;
+    private List<RepairHistory> repairHistoryList = Collections.emptyList();
 
     public User(String fullName, Gender gender, Instant dob, String email, String password) {
         this.fullName = fullName;
@@ -57,5 +58,11 @@ public class User {
         this.password = password;
         this.createdAt = Instant.now();
         this.deleteFlag = false;
+    }
+
+    // set up bidirectional relationship
+    public void add(RepairHistory repairHistory) {
+        this.repairHistoryList.add(repairHistory);
+        repairHistory.setUser(this);
     }
 }
