@@ -30,7 +30,7 @@ public class AddressDAOImpl implements AddressDAO{
 
     @Override
     public List<Address> findAll() {
-        return entityManager.createQuery("SELECT * FROM ADDRESS", Address.class).getResultList();
+        return entityManager.createQuery("SELECT a FROM Address a", Address.class).getResultList();
     }
 
     @Override
