@@ -1,4 +1,4 @@
-package com.app.rightfix.Entities;
+package com.app.rightfix.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

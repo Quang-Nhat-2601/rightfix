@@ -1,9 +1,8 @@
 package com.app.rightfix;
 
-import com.app.rightfix.Entities.Address;
-import com.app.rightfix.Entities.RepairHistory;
-import com.app.rightfix.Entities.RepairShop;
-import com.app.rightfix.Entities.User;
+import com.app.rightfix.entity.Address;
+import com.app.rightfix.entity.RepairShop;
+import com.app.rightfix.entity.User;
 import com.app.rightfix.Enum.Gender;
 import com.app.rightfix.dao.RepairHistoryDAO;
 import com.app.rightfix.dao.RepairShopDAO;
@@ -12,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.time.Instant;
 
@@ -34,7 +34,7 @@ public class RightfixApplication {
 		// create the user
 		User tempUser1 = new User(
 				"Le Quang Nhat",
-				Gender.male,
+				Gender.MALE,
 				Instant.parse("2002-01-26T00:00:00.00Z"),
 				"quangnhat2601@gmail.com",
 				"123");
@@ -43,7 +43,7 @@ public class RightfixApplication {
 
 		tempUser1 = new User(
 				"Nguyen Van A",
-				Gender.male,
+				Gender.MALE,
 				Instant.parse("2000-12-14T00:00:00.00Z"),
 				"nguyenvana@gmail.com",
 				"123");

@@ -1,8 +1,7 @@
-package com.app.rightfix.Entities;
+package com.app.rightfix.entity;
 
 import com.app.rightfix.Enum.Gender;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

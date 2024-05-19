@@ -1,6 +1,6 @@
 package com.app.rightfix.dao;
 
-import com.app.rightfix.Entities.Address;
+import com.app.rightfix.entity.Address;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
