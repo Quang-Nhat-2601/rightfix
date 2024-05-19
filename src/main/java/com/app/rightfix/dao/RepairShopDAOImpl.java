@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class RepairShopDAOImpl implements RepairShopDAO{
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     @Autowired
     public RepairShopDAOImpl(EntityManager entityManager) {

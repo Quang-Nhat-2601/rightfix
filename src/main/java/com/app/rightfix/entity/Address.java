@@ -23,10 +23,10 @@ public class Address {
     private String district;
     @Column(name = "city")
     private String city;
-    @Column(name="created_at")
-    private Instant createdAt;
-    @Column(name="delete_flag")
-    private Boolean deleteFlag;
+    @Column(name="created_at",nullable = false)
+    private Instant createdAt = Instant.now();
+    @Column(name="delete_flag", nullable = false)
+    private Boolean deleteFlag = false;
 
     public Address(String street, String ward, String district, String city) {
         this.street = street;
