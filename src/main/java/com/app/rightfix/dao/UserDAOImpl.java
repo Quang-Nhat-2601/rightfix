@@ -19,4 +19,9 @@ public class UserDAOImpl implements UserDAO {
     public void save(User user) {
         entityManager.persist(user); // This will also save the Address
     }
+
+    @Override
+    public User findUserById(long id) {
+        return entityManager.find(User.class, id);
+    }
 }

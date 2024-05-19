@@ -20,4 +20,9 @@ public class RepairShopDAOImpl implements RepairShopDAO{
     public void save(RepairShop repairShop) {
         entityManager.persist(repairShop);
     }
+
+    @Override
+    public RepairShop findRepairShopById(long id) {
+        return entityManager.find(RepairShop.class, id);
+    }
 }

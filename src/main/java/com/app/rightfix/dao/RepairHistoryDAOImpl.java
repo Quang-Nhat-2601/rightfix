@@ -20,4 +20,9 @@ public class RepairHistoryDAOImpl implements RepairHistoryDAO{
     public void save(RepairHistory repairHistory) {
         entityManager.persist(repairHistory);
     }
+
+    @Override
+    public RepairHistory findRepairHistoryById(long id) {
+        return entityManager.find(RepairHistory.class, id);
+    }
 }
