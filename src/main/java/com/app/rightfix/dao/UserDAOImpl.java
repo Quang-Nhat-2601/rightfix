@@ -6,6 +6,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class UserDAOImpl implements UserDAO {
     private EntityManager entityManager;
@@ -18,5 +20,25 @@ public class UserDAOImpl implements UserDAO {
     @Transactional
     public void save(User user) {
         entityManager.persist(user); // This will also save the Address
+    }
+
+    @Override
+    public User findById(Long id) {
+        return entityManager.find(User.class, id);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return entityManager.createQuery("SELECT a FROM app_user a", User.class).getResultList();
+    }
+
+    @Override
+    public void update(User user) {
+        entityManager.merge(user);
+    }
+
+    @Override
+    public void delete(Long id) {
+        entityManager.remove(id);
     }
 }
