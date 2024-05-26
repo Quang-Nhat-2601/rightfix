@@ -1,6 +1,6 @@
 package com.app.rightfix.controller;
 
-import com.app.rightfix.dto.Response;
+import com.app.rightfix.dto.response.ApiResponse;
 import com.app.rightfix.entity.Address;
 import com.app.rightfix.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,22 +23,22 @@ public class AddressController {
 
     // Create
     @PostMapping("/create")
-    public ResponseEntity<Response> createAddress(@RequestBody Address address) {
+    public ResponseEntity<ApiResponse> createAddress(@RequestBody Address address) {
         addressService.saveAddress(address);
-        Response response = new Response(HttpStatus.OK.value(), "successfully", address);
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.value(), "successfully", address);
+        return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
     }
 
     // Read
     @GetMapping("/get/{id}")
-    public ResponseEntity<Response> getAddressById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> getAddressById(@PathVariable Long id) {
         Address address = addressService.getAddressById(id);
         if (address != null) {
-            Response response = new Response(HttpStatus.OK.value(), "successfully", address);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
+            ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.value(), "successfully", address);
+            return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
         } else {
-            Response response = new Response(HttpStatus.NOT_FOUND.value(), "not found", null);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            ApiResponse apiResponse = new ApiResponse(HttpStatus.NOT_FOUND.value(), "not found", null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
         }
     }
 
@@ -50,30 +50,30 @@ public class AddressController {
 
     // Update
     @PutMapping("/update/{id}")
-    public ResponseEntity<Response> updateAddress(@PathVariable Long id, @RequestBody Address address) {
+    public ResponseEntity<ApiResponse> updateAddress(@PathVariable Long id, @RequestBody Address address) {
         Address existingAddress = addressService.getAddressById(id);
         if (existingAddress != null) {
             address.setId(id);
             addressService.updateAddress(address);
-            Response response = new Response(HttpStatus.OK.value(), "successfully", address);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
+            ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.value(), "successfully", address);
+            return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
         } else {
-            Response response = new Response(HttpStatus.NOT_FOUND.value(), "not found", null);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            ApiResponse apiResponse = new ApiResponse(HttpStatus.NOT_FOUND.value(), "not found", null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
         }
     }
 
     // Delete
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Response> deleteAddress(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> deleteAddress(@PathVariable Long id) {
         Address address = addressService.getAddressById(id);
         if (address != null) {
             addressService.deleteAddress(id);
-            Response response = new Response(HttpStatus.OK.value(), "successfully", null);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
+            ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.value(), "successfully", null);
+            return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
         } else {
-            Response response = new Response(HttpStatus.NOT_FOUND.value(), "not found", null);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            ApiResponse apiResponse = new ApiResponse(HttpStatus.NOT_FOUND.value(), "not found", null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
         }
     }
 }

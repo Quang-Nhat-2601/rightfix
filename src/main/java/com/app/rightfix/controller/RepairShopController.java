@@ -1,6 +1,6 @@
 package com.app.rightfix.controller;
 
-import com.app.rightfix.dto.Response;
+import com.app.rightfix.dto.response.ApiResponse;
 import com.app.rightfix.entity.RepairShop;
 import com.app.rightfix.service.RepairShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +19,20 @@ public class RepairShopController {
         this.repairShopService = repairShopService;
     }
     @PostMapping("/create")
-    public ResponseEntity<Response> createRepairShop(@RequestBody RepairShop repairShop) {
+    public ResponseEntity<ApiResponse> createRepairShop(@RequestBody RepairShop repairShop) {
         repairShopService.saveRepairShop(repairShop);
-        Response response = new Response(HttpStatus.OK.value(), "successfully", repairShop);
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.value(), "successfully", repairShop);
+        return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
     }
     @GetMapping("/get/{id}")
-    public ResponseEntity<Response> getRepairShopById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> getRepairShopById(@PathVariable Long id) {
         RepairShop repairShop = repairShopService.getRepairShopById(id);
         if (repairShop != null) {
-            Response response = new Response(HttpStatus.OK.value(), "successfully", repairShop);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
+            ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.value(), "successfully", repairShop);
+            return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
         } else {
-            Response response = new Response(HttpStatus.NOT_FOUND.value(), "not found", null);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            ApiResponse apiResponse = new ApiResponse(HttpStatus.NOT_FOUND.value(), "not found", null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
         }
     }
     @GetMapping("/get/all")
@@ -41,28 +41,28 @@ public class RepairShopController {
         return ResponseEntity.ok().body(repairShop);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<Response> updateRepairShop(@PathVariable Long id, @RequestBody RepairShop repairShop) {
+    public ResponseEntity<ApiResponse> updateRepairShop(@PathVariable Long id, @RequestBody RepairShop repairShop) {
         RepairShop itemRepairShop = repairShopService.getRepairShopById(id);
         if (itemRepairShop != null) {
             repairShop.setId(id);
             repairShopService.updateRepairShop(repairShop);
-            Response response = new Response(HttpStatus.OK.value(), "successfully", repairShop);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
+            ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.value(), "successfully", repairShop);
+            return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
         } else {
-            Response response = new Response(HttpStatus.NOT_FOUND.value(), "not found", null);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            ApiResponse apiResponse = new ApiResponse(HttpStatus.NOT_FOUND.value(), "not found", null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
         }
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Response> deleteRepairShop(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> deleteRepairShop(@PathVariable Long id) {
         RepairShop repairShop = repairShopService.getRepairShopById(id);
         if (repairShop != null) {
             repairShopService.deleteRepairShop(id);
-            Response response = new Response(HttpStatus.OK.value(), "successfully", null);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
+            ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.value(), "successfully", null);
+            return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
         } else {
-            Response response = new Response(HttpStatus.NOT_FOUND.value(), "not found", null);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            ApiResponse apiResponse = new ApiResponse(HttpStatus.NOT_FOUND.value(), "not found", null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
         }
     }
 }

@@ -2,17 +2,23 @@ package com.app.rightfix.entity;
 
 import com.app.rightfix.Enum.Gender;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "app_user")
 @Data
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +33,7 @@ public class User {
     private Gender gender;
 
     @Column(name = "dob")
-    private Instant dob;
+    private LocalDate dob;
 
     @Column(name = "email")
     private String email;
@@ -35,11 +41,11 @@ public class User {
     @Column(name="password")
     private String password;
 
-    @Column(name="created_at")
-    private Instant createdAt;
+    @Column(name="created_at", nullable = false)
+    private Instant createdAt = Instant.now();
 
-    @Column(name="delete_flag")
-    private Boolean deleteFlag;
+    @Column(name="delete_flag", nullable = false)
+    private Boolean deleteFlag = false;
 
     @OneToMany(mappedBy = "user", cascade = {
             CascadeType.DETACH,
@@ -49,7 +55,7 @@ public class User {
     })
     private List<RepairHistory> repairHistoryList = Collections.emptyList();
 
-    public User(String fullName, Gender gender, Instant dob, String email, String password) {
+    public User(String fullName, Gender gender, LocalDate dob, String email, String password) {
         this.fullName = fullName;
         this.gender = gender;
         this.dob = dob;
@@ -64,4 +70,7 @@ public class User {
         this.repairHistoryList.add(repairHistory);
         repairHistory.setUser(this);
     }
+
+    @ManyToMany
+    Set<Role> roles;
 }
