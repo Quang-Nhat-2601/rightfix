@@ -24,6 +24,7 @@ public class RepairHistoryDAOImpl implements RepairHistoryDAO{
     }
 
     @Override
+<<<<<<< HEAD
     public RepairHistory findById(Long id) {
         return entityManager.find(RepairHistory.class, id);
     }
@@ -44,4 +45,9 @@ public class RepairHistoryDAOImpl implements RepairHistoryDAO{
     public void delete(Long id) {
         entityManager.remove(id);
     }
+=======
+    public RepairHistory findRepairHistoryById(long id) {
+        return entityManager.find(RepairHistory.class, id);
+    }
+>>>>>>> main
 }

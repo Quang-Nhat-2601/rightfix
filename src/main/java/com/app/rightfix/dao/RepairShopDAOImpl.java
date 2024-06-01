@@ -24,6 +24,7 @@ public class RepairShopDAOImpl implements RepairShopDAO{
     }
 
     @Override
+<<<<<<< HEAD
     public RepairShop findById(Long id) {
         return entityManager.find(RepairShop.class, id);
     }
@@ -44,4 +45,9 @@ public class RepairShopDAOImpl implements RepairShopDAO{
     public void delete(Long id) {
         entityManager.remove(id);
     }
+=======
+    public RepairShop findRepairShopById(long id) {
+        return entityManager.find(RepairShop.class, id);
+    }
+>>>>>>> main
 }
