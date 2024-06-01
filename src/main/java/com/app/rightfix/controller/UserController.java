@@ -1,6 +1,6 @@
 package com.app.rightfix.controller;
 
-import com.app.rightfix.dto.response.ApiResponse;
+import com.app.rightfix.dto.Response;
 import com.app.rightfix.entity.User;
 import com.app.rightfix.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +19,20 @@ public class UserController {
         this.userService = userService;
     }
     @PostMapping("/create")
-    public ResponseEntity<ApiResponse> createUser(@RequestBody User user) {
+    public ResponseEntity<Response> createUser(@RequestBody User user) {
         userService.saveUser(user);
-        ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.value(), "successfully", user);
-        return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
+        Response response = new Response(HttpStatus.OK.value(), "successfully", user);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
     @GetMapping("/get/{id}")
-    public ResponseEntity<ApiResponse> getUserById(@PathVariable Long id) {
+    public ResponseEntity<Response> getUserById(@PathVariable Long id) {
         User user = userService.getUserById(id);
         if (user != null) {
-            ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.value(), "successfully", user);
-            return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
+            Response response = new Response(HttpStatus.OK.value(), "successfully", user);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } else {
-            ApiResponse apiResponse = new ApiResponse(HttpStatus.NOT_FOUND.value(), "not found", null);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
+            Response response = new Response(HttpStatus.NOT_FOUND.value(), "not found", null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
     @GetMapping("/get/all")
@@ -41,28 +41,28 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<ApiResponse> updateUserShop(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<Response> updateUserShop(@PathVariable Long id, @RequestBody User user) {
         User itemUser = userService.getUserById(id);
         if (itemUser != null) {
             user.setId(id);
             userService.updateUser(user);
-            ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.value(), "successfully", user);
-            return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
+            Response response = new Response(HttpStatus.OK.value(), "successfully", user);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } else {
-            ApiResponse apiResponse = new ApiResponse(HttpStatus.NOT_FOUND.value(), "not found", null);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
+            Response response = new Response(HttpStatus.NOT_FOUND.value(), "not found", null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<ApiResponse> deleteUserShop(@PathVariable Long id) {
+    public ResponseEntity<Response> deleteUserShop(@PathVariable Long id) {
         User user = userService.getUserById(id);
         if (user != null) {
             userService.deleteUser(id);
-            ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.value(), "successfully", null);
-            return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
+            Response response = new Response(HttpStatus.OK.value(), "successfully", null);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } else {
-            ApiResponse apiResponse = new ApiResponse(HttpStatus.NOT_FOUND.value(), "not found", null);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
+            Response response = new Response(HttpStatus.NOT_FOUND.value(), "not found", null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
 }

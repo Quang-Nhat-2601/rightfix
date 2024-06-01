@@ -37,11 +37,11 @@ public class RepairHistory {
     private Boolean isNewItem;
     @Column(name="cost")
     private double cost;
-    @Column(name="date_fix", nullable = false)
+    @Column(name="date_fix")
     private Instant dateFix;
-    @Column(name="created_at", nullable = false)
+    @Column(name="created_at")
     private Instant createdAt;
-    @Column(name="delete_flag", nullable = false)
+    @Column(name="delete_flag")
     private Boolean deleteFlag;
 
     public RepairHistory(User user, RepairShop repairShop, String itemFix, Boolean isNewItem, double cost, Instant dateFix) {

@@ -4,10 +4,9 @@ import com.app.rightfix.dao.RepairShopDAO;
 import com.app.rightfix.entity.RepairShop;
 import com.app.rightfix.service.RepairShopService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service
+
 public class RepairShopServiceImpl implements RepairShopService {
     private final RepairShopDAO repairShopDAO;
     @Autowired

@@ -1,8 +1,6 @@
 package com.app.rightfix.service;
 
 import com.app.rightfix.entity.Address;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

@@ -14,68 +14,66 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 import java.time.Instant;
-import java.time.LocalDate;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.app.rightfix"})
 public class RightfixApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RightfixApplication.class, args);
 	}
 
-//	@Bean
-//	public CommandLineRunner commandLineRunner(UserDAO userDAO, RepairShopDAO repairShopDAO, RepairHistoryDAO repairHistoryDAO) {
-//		return runner -> {
-//			createUser(userDAO);
-//			createRepairShop(repairShopDAO);
-//		};
-//	}
-//
-//	private void createUser(UserDAO userDAO) {
-//		// create the user
-//		User tempUser1 = new User(
-//				"Le Quang Nhat",
-//				Gender.MALE,
-//				LocalDate.parse("2002-01-26T00:00:00.00Z"),
-//				"quangnhat2601@gmail.com",
-//				"123");
-//		System.out.println("Saving User with userId: " + tempUser1.getId());
-//		userDAO.save(tempUser1);
-//
-//		tempUser1 = new User(
-//				"Nguyen Van A",
-//				Gender.MALE,
-//				LocalDate.parse("2000-12-14T00:00:00.00Z"),
-//				"nguyenvana@gmail.com",
-//				"123");
-//
-//		System.out.println("Saving User with userId: " + tempUser1.getId());
-//		userDAO.save(tempUser1);
-//
-//		// notify done
-//		System.out.println("DONE");
-//	}
-//
-//	private void createRepairShop(RepairShopDAO repairShopDAO) {
-//		// create the user
-//		RepairShop temp = new RepairShop("HEAD 26");
-//		Address address = new Address("street name", "4", "8", "Ho Chi Minh");
-//		temp.setAddress(address);
-//		// save User
-//		System.out.println("Saving Repair Shop with Id: " + temp.getId());
-//
-//		// create the user
-//		RepairShop temp1 = new RepairShop("HEAD 30");
-//		Address address1 = new Address("street name", "3", "Binh Thanh", "Ho Chi Minh");
-//		temp1.setAddress(address1);
-//		// save User
-//		System.out.println("Saving Repair Shop with Id: " + temp.getId());
-//
-//		repairShopDAO.save(temp);
-//		repairShopDAO.save(temp1);
-//
-//		// notify done
-//		System.out.println("DONE");
-//	}
+	@Bean
+	public CommandLineRunner commandLineRunner(UserDAO userDAO, RepairShopDAO repairShopDAO, RepairHistoryDAO repairHistoryDAO) {
+		return runner -> {
+			createUser(userDAO);
+			createRepairShop(repairShopDAO);
+		};
+	}
+
+	private void createUser(UserDAO userDAO) {
+		// create the user
+		User tempUser1 = new User(
+				"Le Quang Nhat",
+				Gender.MALE,
+				Instant.parse("2002-01-26T00:00:00.00Z"),
+				"quangnhat2601@gmail.com",
+				"123");
+		System.out.println("Saving User with userId: " + tempUser1.getId());
+		userDAO.save(tempUser1);
+
+		tempUser1 = new User(
+				"Nguyen Van A",
+				Gender.MALE,
+				Instant.parse("2000-12-14T00:00:00.00Z"),
+				"nguyenvana@gmail.com",
+				"123");
+
+		System.out.println("Saving User with userId: " + tempUser1.getId());
+		userDAO.save(tempUser1);
+
+		// notify done
+		System.out.println("DONE");
+	}
+
+	private void createRepairShop(RepairShopDAO repairShopDAO) {
+		// create the user
+		RepairShop temp = new RepairShop("HEAD 26");
+		Address address = new Address("street name", "4", "8", "Ho Chi Minh");
+		temp.setAddress(address);
+		// save User
+		System.out.println("Saving Repair Shop with Id: " + temp.getId());
+
+		// create the user
+		RepairShop temp1 = new RepairShop("HEAD 30");
+		Address address1 = new Address("street name", "3", "Binh Thanh", "Ho Chi Minh");
+		temp1.setAddress(address1);
+		// save User
+		System.out.println("Saving Repair Shop with Id: " + temp.getId());
+
+		repairShopDAO.save(temp);
+		repairShopDAO.save(temp1);
+
+		// notify done
+		System.out.println("DONE");
+	}
 }

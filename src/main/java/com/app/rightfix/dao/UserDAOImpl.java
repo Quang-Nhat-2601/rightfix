@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -26,14 +25,6 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User findById(Long id) {
         return entityManager.find(User.class, id);
-    }
-
-    @Override
-    public Optional<User> findByName(String email) {
-        return Optional.ofNullable(entityManager.createQuery(
-                        "SELECT u FROM User u WHERE u.email = :email", User.class)
-                .setParameter("email", email)
-                .getSingleResult());
     }
 
     @Override
