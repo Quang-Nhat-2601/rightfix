@@ -1,10 +1,10 @@
 spring:
   application:
-    name: defaultdb
+    name: ${DATABASE_NAME}
   datasource:
-    url: jdbc:postgresql://pg-180e2b85-hogphat1607-d8bf.f.aivencloud.com:24974/defaultdb
-    username: avnadmin
-    password: AVNS_QQjTUWeRowIZfIzUZSd
+    url: jdbc:postgresql://{DATABASE_HOST}:{DATABASE_PORT}/{DATABASE_NAME}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
 
 # Turn off the Spring Boot banner
 spring.main.banner-mode: off
