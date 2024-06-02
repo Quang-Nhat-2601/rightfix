@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class RepairHistoryDAOImpl implements RepairHistoryDAO{
+public class RepairHistoryDAOImpl implements RepairHistoryDAO {
     private final EntityManager entityManager;
 
     @Autowired
@@ -30,7 +30,7 @@ public class RepairHistoryDAOImpl implements RepairHistoryDAO{
 
     @Override
     public List<RepairHistory> findAll() {
-        return entityManager.createQuery("SELECT a FROM repair_history a", RepairHistory.class).getResultList();
+        return entityManager.createQuery("SELECT a FROM RepairHistory a", RepairHistory.class).getResultList();
     }
 
     @Override
@@ -44,6 +44,7 @@ public class RepairHistoryDAOImpl implements RepairHistoryDAO{
     public void delete(Long id) {
         entityManager.remove(id);
     }
+
     public RepairHistory findRepairHistoryById(long id) {
         return entityManager.find(RepairHistory.class, id);
     }

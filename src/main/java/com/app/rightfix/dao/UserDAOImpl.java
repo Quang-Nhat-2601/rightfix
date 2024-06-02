@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public class UserDAOImpl implements UserDAO {
     private EntityManager entityManager;
+
     @Autowired
     public UserDAOImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -29,7 +30,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> findAll() {
-        return entityManager.createQuery("SELECT a FROM app_user a", User.class).getResultList();
+        return entityManager.createQuery("SELECT a FROM User a", User.class).getResultList();
     }
 
     @Override
@@ -41,6 +42,7 @@ public class UserDAOImpl implements UserDAO {
     public void delete(Long id) {
         entityManager.remove(id);
     }
+
     public User findUserById(long id) {
         return entityManager.find(User.class, id);
     }
