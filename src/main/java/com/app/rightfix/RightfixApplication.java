@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class RightfixApplication {
@@ -35,7 +36,7 @@ public class RightfixApplication {
 		User tempUser1 = new User(
 				"Le Quang Nhat",
 				Gender.MALE,
-				Instant.parse("2002-01-26T00:00:00.00Z"),
+				LocalDate.parse("2002-01-26"),
 				"quangnhat2601@gmail.com",
 				"123");
 		System.out.println("Saving User with userId: " + tempUser1.getId());
@@ -44,7 +45,7 @@ public class RightfixApplication {
 		tempUser1 = new User(
 				"Nguyen Van A",
 				Gender.MALE,
-				Instant.parse("2000-12-14T00:00:00.00Z"),
+				LocalDate.parse("2000-12-14"),
 				"nguyenvana@gmail.com",
 				"123");
 
