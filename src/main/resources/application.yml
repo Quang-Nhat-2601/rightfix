@@ -1,10 +1,10 @@
 spring:
   application:
-    name: rightfix
+    name: defaultdb
   datasource:
-    url: jdbc:postgresql://localhost:54321/rightfix
-    username: postgres
-    password: password
+    url: jdbc:postgresql://pg-180e2b85-hogphat1607-d8bf.f.aivencloud.com:24974/defaultdb
+    username: avnadmin
+    password: AVNS_QQjTUWeRowIZfIzUZSd
 
 # Turn off the Spring Boot banner
 spring.main.banner-mode: off
@@ -21,4 +21,4 @@ spring.jpa.hibernate.ddl-auto: create
 
 # Set server port
 server:
-  port: 8081
+  port: 8080
