@@ -25,11 +25,11 @@ public class RepairShop {
     @JoinColumn(name="address_id")
     private Address address;
 
-    @Column(name="created_at")
-    private Instant createdAt;
+    @Column(name="created_at", nullable = false)
+    private Instant createdAt = Instant.now();
 
-    @Column(name="delete_flag")
-    private Boolean deleteFlag;
+    @Column(name="delete_flag", nullable = false)
+    private Boolean deleteFlag = false;
 
     @OneToMany(mappedBy = "repairShop", cascade = {
             CascadeType.DETACH,

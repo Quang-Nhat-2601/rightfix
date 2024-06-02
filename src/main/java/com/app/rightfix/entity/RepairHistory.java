@@ -39,10 +39,10 @@ public class RepairHistory {
     private double cost;
     @Column(name="date_fix")
     private Instant dateFix;
-    @Column(name="created_at")
-    private Instant createdAt;
-    @Column(name="delete_flag")
-    private Boolean deleteFlag;
+    @Column(name="created_at", nullable = false)
+    private Instant createdAt = Instant.now();
+    @Column(name="delete_flag", nullable = false)
+    private Boolean deleteFlag = false;
 
     public RepairHistory(User user, RepairShop repairShop, String itemFix, Boolean isNewItem, double cost, Instant dateFix) {
         this.user = user;

@@ -35,11 +35,11 @@ public class User {
     @Column(name="password")
     private String password;
 
-    @Column(name="created_at")
-    private Instant createdAt;
+    @Column(name="created_at", nullable = false)
+    private Instant createdAt = Instant.now();
 
     @Column(name="delete_flag")
-    private Boolean deleteFlag;
+    private Boolean deleteFlag = false;
 
     @OneToMany(mappedBy = "user", cascade = {
             CascadeType.DETACH,
