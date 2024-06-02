@@ -2,6 +2,8 @@
 FROM gradle:8.7 AS build
 WORKDIR /app
 COPY . .
+RUN gradle --version  # Check Gradle installation
+RUN gradle wrapper --gradle-version 8.7  # Update Gradle wrapper
 RUN ./gradlew build
 
 # Stage 2: Production stage
