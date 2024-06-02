@@ -1,10 +1,10 @@
 # Stage 1: Build stage
-FROM gradle:7.2.0-jdk17 AS build
+FROM gradle:8.7 AS build
 WORKDIR /app
 COPY . .
 RUN gradle --version  # Check Gradle installation
-RUN gradle wrapper --gradle-version 7.2.0  # Update Gradle wrapper
-RUN gradle build --no-daemon
+RUN gradle wrapper --gradle-version 8.7  # Update Gradle wrapper
+RUN ./gradlew build --no-daemon
 
 # Stage 2: Production stage
 FROM openjdk:17.0.1-jdk-slim
