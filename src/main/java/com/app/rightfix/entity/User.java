@@ -31,6 +31,8 @@ public class User {
 
     @Column(name = "email")
     private String email;
+    @Column(name="username")
+    private String username;
 
     @Column(name="password")
     private String password;
@@ -57,6 +59,11 @@ public class User {
         this.password = password;
         this.createdAt = Instant.now();
         this.deleteFlag = false;
+    }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     // set up bidirectional relationship

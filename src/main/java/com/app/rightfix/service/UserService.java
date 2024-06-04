@@ -3,13 +3,14 @@ package com.app.rightfix.service;
 import com.app.rightfix.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
     // Create
     void saveUser(User user);
 
     // Read
-    User getUserById(Long id);
+    Optional<User> getUserById(Long id);
 
     List<User> getAllUser();
 
