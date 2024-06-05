@@ -1,5 +1,6 @@
 package com.app.rightfix;
 
+import com.app.rightfix.dao.UserDAO;
 import com.app.rightfix.entity.Address;
 import com.app.rightfix.entity.RepairShop;
 import com.app.rightfix.entity.User;
