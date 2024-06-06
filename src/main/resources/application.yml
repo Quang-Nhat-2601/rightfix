@@ -1,36 +1,11 @@
-#spring:
-#  application:
-#    name: rightfix
-#  datasource:
-##    url: jdbc:postgresql://pg-180e2b85-hogphat1607-d8bf.f.aivencloud.com:24974/defaultdb
-#    url: jdbc:postgresql://localhost:54321/rightfix
-#    username: postgres
-#    password: password
-#
-## Turn off the Spring Boot banner
-#spring.main.banner-mode: off
-#
-## Reduce logging level. Set logging level to warn
-#logging:
-#  level:
-#    root: warn
-#    org.hibernate.SQL: debug
-#    org.hibernate.orm.jdbc.bind: trace
-#
-## Config JPA/Hibernate to auto create the table
-#spring.jpa.hibernate.ddl-auto: create
-#
-## Set server port
-#server:
-#  port: 8082
-
 spring:
   application:
-    name: ${DATABASE_NAME}
+    name: rightfix
   datasource:
-    url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+#    url: jdbc:postgresql://pg-180e2b85-hogphat1607-d8bf.f.aivencloud.com:24974/defaultdb
+    url: jdbc:postgresql://localhost:54321/rightfix
+    username: postgres
+    password: password
 
 # Turn off the Spring Boot banner
 spring.main.banner-mode: off
@@ -47,4 +22,29 @@ spring.jpa.hibernate.ddl-auto: create
 
 # Set server port
 server:
-  port: 8080
+  port: 8082
+
+#spring:
+#  application:
+#    name: ${DATABASE_NAME}
+#  datasource:
+#    url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+#    username: ${DATABASE_USERNAME}
+#    password: ${DATABASE_PASSWORD}
+#
+## Turn off the Spring Boot banner
+#spring.main.banner-mode: off
+#
+## Reduce logging level. Set logging level to warn
+#logging:
+#  level:
+#    root: warn
+#    org.hibernate.SQL: debug
+#    org.hibernate.orm.jdbc.bind: trace
+#
+## Config JPA/Hibernate to auto create the table
+#spring.jpa.hibernate.ddl-auto: create
+#
+## Set server port
+#server:
+#  port: 8080

@@ -1,15 +1,12 @@
 package com.app.rightfix.controller;
 
 import com.app.rightfix.dto.RegisterDTO;
-import com.app.rightfix.dto.Response;
 import com.app.rightfix.entity.User;
 import com.app.rightfix.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("user/api/v1")
@@ -22,18 +19,18 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<Response> register(@RequestBody RegisterDTO registerDTO) {
-        Response response = null;
-        try {
-            User savedUser = new User(registerDTO.getEmail(), passwordEncoder.encode(registerDTO.getPassword()));
-            userService.saveUser(savedUser);
-            response =  new Response(HttpStatus.OK.value(), "successful", null);
-        } catch (Exception e) {
-            response =  new Response(HttpStatus.OK.value(), "failed", null);
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(response);
-    }
+//    @PostMapping("/register")
+//    public ResponseEntity<Response> register(@RequestBody RegisterDTO registerDTO) {
+//        Response response = null;
+//        try {
+//            User savedUser = new User(registerDTO.getEmail(), passwordEncoder.encode(registerDTO.getPassword()));
+//            userService.saveUser(savedUser);
+//            response =  new Response(HttpStatus.OK.value(), "successful", null);
+//        } catch (Exception e) {
+//            response =  new Response(HttpStatus.OK.value(), "failed", null);
+//        }
+//        return ResponseEntity.status(HttpStatus.OK).body(response);
+//    }
 //    @GetMapping("/get/{id}")
 //    public ResponseEntity<Response> getUserById(@PathVariable Long id) {
 //        User user = userService.getUserById(id);

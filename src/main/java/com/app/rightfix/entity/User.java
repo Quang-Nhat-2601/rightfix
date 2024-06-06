@@ -51,11 +51,12 @@ public class User {
     })
     private List<RepairHistory> repairHistoryList = Collections.emptyList();
 
-    public User(String fullName, Gender gender, Instant dob, String email, String password) {
+    public User(String fullName, Gender gender, Instant dob, String email, String username, String password) {
         this.fullName = fullName;
         this.gender = gender;
         this.dob = dob;
         this.email = email;
+        this.username = username;
         this.password = password;
         this.createdAt = Instant.now();
         this.deleteFlag = false;
