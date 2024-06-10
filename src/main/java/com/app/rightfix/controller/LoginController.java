@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("auth/api/v1")
 public class LoginController {
     @Autowired
     private JwtTokenProvider tokenProvider;
@@ -42,18 +42,17 @@ public class LoginController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         List<User> users = userRepository.findByUsername(registerDTO.getUsername());
-        if(users.isEmpty()) {
+        if (users.isEmpty()) {
             throw new UsernameNotFoundException("not found user!");
         }
         CustomUserDetails customUserDetails = new CustomUserDetails(users.get(0));
         // Trả về jwt cho người dùng.
-        String jwt = tokenProvider.generateToken(customUserDetails);
-        return jwt;
+        return tokenProvider.generateToken(customUserDetails);
     }
 
     // Api /api/random yêu cầu phải xác thực mới có thể request
     @GetMapping("/random")
-    public String randomStuff(){
+    public String randomStuff() {
         return "authenticated";
     }
 }

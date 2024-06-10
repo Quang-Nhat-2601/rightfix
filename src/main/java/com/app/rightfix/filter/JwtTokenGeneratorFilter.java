@@ -25,7 +25,7 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication != null) {
+        if (authentication != null) {
             SecretKey key = Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes(StandardCharsets.UTF_8));
             String jwt = Jwts.builder().setIssuer("Right Fix").setSubject("JWT Token")
                     .claim("username", authentication.getName())
@@ -40,7 +40,7 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter {
 
     private String populateAuthorities(Collection<? extends GrantedAuthority> collection) {
         Set<String> authoritiesSet = new HashSet<>();
-        for(GrantedAuthority grantedAuthority : collection) {
+        for (GrantedAuthority grantedAuthority : collection) {
             authoritiesSet.add(grantedAuthority.getAuthority());
         }
         return String.join(",", authoritiesSet);

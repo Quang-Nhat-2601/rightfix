@@ -29,8 +29,8 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
         String username = authentication.getName();
         String pwd = authentication.getCredentials().toString();
         List<User> users = userRepository.findByUsername(username);
-        if(!users.isEmpty()) {
-            if(passwordEncoder.matches(pwd, users.get(0).getPassword())) {
+        if (!users.isEmpty()) {
+            if (passwordEncoder.matches(pwd, users.get(0).getPassword())) {
                 List<GrantedAuthority> authorityList = new ArrayList<>();
                 authorityList.add(new SimpleGrantedAuthority("admin"));
                 return new UsernamePasswordAuthenticationToken(username, pwd, authorityList);

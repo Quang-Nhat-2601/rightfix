@@ -34,16 +34,16 @@ public class User {
 
     @Column(name = "email")
     private String email;
-    @Column(name="username")
+    @Column(name = "username")
     private String username;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
-    @Column(name="created_at", nullable = false)
+    @Column(name = "created_at", nullable = false)
     private Instant createdAt = Instant.now();
 
-    @Column(name="delete_flag")
+    @Column(name = "delete_flag")
     private Boolean deleteFlag = false;
 
     @OneToMany(mappedBy = "user", cascade = {
@@ -54,7 +54,7 @@ public class User {
     })
     private List<RepairHistory> repairHistoryList = Collections.emptyList();
 
-    public User(String fullName, Gender gender, LocalDate dob,String username, String email, String password) {
+    public User(String fullName, Gender gender, LocalDate dob, String username, String email, String password) {
         this.fullName = fullName;
         this.gender = gender;
         this.dob = dob;
@@ -63,11 +63,6 @@ public class User {
         this.password = password;
         this.createdAt = Instant.now();
         this.deleteFlag = false;
-    }
-
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
     }
 
     // set up bidirectional relationship
