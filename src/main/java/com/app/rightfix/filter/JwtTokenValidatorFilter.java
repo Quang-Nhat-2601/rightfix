@@ -1,6 +1,6 @@
 package com.app.rightfix.filter;
 
-import com.app.rightfix.Constants.SecurityConstants;
+import com.app.rightfix.constants.SecurityConstants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -15,12 +15,11 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.crypto.BadPaddingException;
 import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-public class JWTTokenValidatorFilter extends OncePerRequestFilter {
+public class JwtTokenValidatorFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {

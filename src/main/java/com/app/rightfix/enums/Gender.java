@@ -1,4 +1,4 @@
-package com.app.rightfix.Enum;
+package com.app.rightfix.enums;
 
 public enum Gender {
     MALE,

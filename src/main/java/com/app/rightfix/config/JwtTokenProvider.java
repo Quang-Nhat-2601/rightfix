@@ -1,6 +1,5 @@
 package com.app.rightfix.config;
 
-import com.app.rightfix.Constants.SecurityConstants;
 import com.app.rightfix.entity.CustomUserDetails;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

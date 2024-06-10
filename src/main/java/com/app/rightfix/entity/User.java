@@ -1,6 +1,6 @@
 package com.app.rightfix.entity;
 
-import com.app.rightfix.Enum.Gender;
+import com.app.rightfix.enums.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

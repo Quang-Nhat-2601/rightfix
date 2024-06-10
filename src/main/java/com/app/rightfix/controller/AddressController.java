@@ -1,7 +1,7 @@
 package com.app.rightfix.controller;
 
-import com.app.rightfix.entity.Address;
 import com.app.rightfix.dto.Response;
+import com.app.rightfix.entity.Address;
 import com.app.rightfix.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

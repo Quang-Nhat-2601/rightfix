@@ -1,12 +1,7 @@
 package com.app.rightfix;
 
-import com.app.rightfix.dao.UserDAO;
-import com.app.rightfix.entity.Address;
-import com.app.rightfix.entity.RepairShop;
 import com.app.rightfix.entity.User;
-import com.app.rightfix.Enum.Gender;
-import com.app.rightfix.dao.RepairHistoryDAO;
-import com.app.rightfix.dao.RepairShopDAO;
+import com.app.rightfix.enums.Gender;
 import com.app.rightfix.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.time.Instant;
 import java.time.LocalDate;
 
 @SpringBootApplication
