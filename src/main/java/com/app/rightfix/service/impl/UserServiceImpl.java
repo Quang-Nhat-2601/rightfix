@@ -25,13 +25,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public List<User> getAllUser() {
-        return userRepository.findAll();
+    public UserDetails loadUserById(Long id) {
+        User user = userRepository.findById(id).orElse(null);
+        if(user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+        return new CustomUserDetails(user);
     }
 
     @Override
@@ -50,10 +49,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if(user == null) {
+        List<User> users = userRepository.findByUsername(username);
+        if(users.isEmpty()) {
             throw new UsernameNotFoundException(username);
         }
-        return new CustomUserDetails(user);
+        return new CustomUserDetails(users.get(0));
     }
 }

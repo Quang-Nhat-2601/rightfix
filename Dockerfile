@@ -2,7 +2,7 @@
 FROM gradle:8.7 AS build
 WORKDIR /app
 COPY . .
-RUN chmod +x gradlew && ./gradlew build --no-daemon
+RUN gradle build
 
 # Stage 2: Production stage
 FROM openjdk:17.0.1-jdk-slim

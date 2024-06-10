@@ -1,7 +1,8 @@
 package com.app.rightfix.entity;
 
-import com.app.rightfix.Enum.Gender;
+import com.app.rightfix.enums.Gender;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Table(name = "app_user")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,11 +54,12 @@ public class User {
     })
     private List<RepairHistory> repairHistoryList = Collections.emptyList();
 
-    public User(String fullName, Gender gender, LocalDate dob, String email, String password) {
+    public User(String fullName, Gender gender, LocalDate dob,String username, String email, String password) {
         this.fullName = fullName;
         this.gender = gender;
         this.dob = dob;
         this.email = email;
+        this.username = username;
         this.password = password;
         this.createdAt = Instant.now();
         this.deleteFlag = false;

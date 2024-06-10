@@ -3,9 +3,11 @@ package com.app.rightfix.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 
 @Data
 @AllArgsConstructor
@@ -13,36 +15,36 @@ public class CustomUserDetails implements UserDetails {
     User user;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        // Mặc định mình sẽ để tất cả là ROLE_USER. Để demo cho đơn giản.
+        return Collections.singleton(new SimpleGrantedAuthority("admin"));
     }
-
     @Override
     public String getPassword() {
-        return null;
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return user.getUsername();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
