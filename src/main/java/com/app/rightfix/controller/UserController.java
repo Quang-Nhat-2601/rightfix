@@ -27,7 +27,13 @@ public class UserController {
     public ResponseEntity<Response> register(@RequestBody RegisterDTO registerDTO) {
         Response response = null;
         try {
-            User savedUser = new User(registerDTO.getUsername(), passwordEncoder.encode(registerDTO.getPassword()));
+            User savedUser = new User(
+                    registerDTO.getFullName()
+                    , registerDTO.getGender()
+                    , registerDTO.getDob()
+                    , registerDTO.getUsername()
+                    , registerDTO.getEmail()
+                    , passwordEncoder.encode(registerDTO.getPassword()));
             userService.saveUser(savedUser);
             response = new Response(HttpStatus.OK.value(), "successful", null);
         } catch (Exception e) {

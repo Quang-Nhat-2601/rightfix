@@ -14,57 +14,34 @@ import java.time.LocalDate;
 
 @SpringBootApplication
 public class RightfixApplication {
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	public static void main(String[] args) {
-		SpringApplication.run(RightfixApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RightfixApplication.class, args);
+    }
 
-	@Bean
-	public CommandLineRunner commandLineRunner() {
-		return runner -> {
-			createUser();
-//			createRepairShop(repairShopDAO);
-		};
-	}
+    @Bean
+    public CommandLineRunner commandLineRunner() {
+        return runner -> {
+            createUser();
+        };
+    }
 
-	private void createUser() {
-		// create the user
-		User tempUser1 = new User(
-				"Le Quang Nhat",
-				Gender.MALE,
-				LocalDate.parse("2002-01-26"),
-				"coderga",
-				"quangnhat2601@gmail.com",
-				passwordEncoder.encode("12345"));
-		System.out.println("Saving User with userId: " + tempUser1.getId());
-		userRepository.save(tempUser1);
-		System.out.println("DONE");
-	}
-//
-//	private void createRepairShop(RepairShopDAO repairShopDAO) {
-//		// create the user
-//		RepairShop temp = new RepairShop("HEAD 26");
-//		Address address = new Address("street name", "4", "8", "Ho Chi Minh");
-//		temp.setAddress(address);
-//		// save User
-//		System.out.println("Saving Repair Shop with Id: " + temp.getId());
-//
-//		// create the user
-//		RepairShop temp1 = new RepairShop("HEAD 30");
-//		Address address1 = new Address("street name", "3", "Binh Thanh", "Ho Chi Minh");
-//		temp1.setAddress(address1);
-//		// save User
-//		System.out.println("Saving Repair Shop with Id: " + temp.getId());
-//
-//		repairShopDAO.save(temp);
-//		repairShopDAO.save(temp1);
-//
-//		// notify done
-//		System.out.println("DONE");
-//	}
+    private void createUser() {
+        // create the user
+        User tempUser1 = new User(
+                "Le Quang Nhat",
+                Gender.MALE,
+                LocalDate.parse("2002-01-26"),
+                "coderga",
+                "quangnhat2601@gmail.com",
+                passwordEncoder.encode("12345"));
+        System.out.println("Saving User with userId: " + tempUser1.getId());
+        userRepository.save(tempUser1);
+        System.out.println("DONE");
+    }
 }
