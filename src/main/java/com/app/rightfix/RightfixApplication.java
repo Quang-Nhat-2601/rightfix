@@ -44,8 +44,8 @@ public class RightfixApplication {
 				"Le Quang Nhat",
 				Gender.MALE,
 				LocalDate.parse("2002-01-26"),
-				"quangnhat2601@gmail.com",
 				"coderga",
+				"quangnhat2601@gmail.com",
 				passwordEncoder.encode("12345"));
 		System.out.println("Saving User with userId: " + tempUser1.getId());
 		userRepository.save(tempUser1);

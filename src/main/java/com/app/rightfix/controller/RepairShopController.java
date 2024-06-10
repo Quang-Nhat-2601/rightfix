@@ -1,5 +1,6 @@
 package com.app.rightfix.controller;
 
+import com.app.rightfix.dto.Response;
 import com.app.rightfix.entity.RepairShop;
 import com.app.rightfix.service.RepairShopService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,6 @@
 package com.app.rightfix.controller;
 
+import com.app.rightfix.dto.Response;
 import com.app.rightfix.entity.RepairHistory;
 import com.app.rightfix.service.RepairHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
