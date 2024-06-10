@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class AddressDAOImpl implements AddressDAO{
+public class AddressDAOImpl implements AddressDAO {
     private final EntityManager entityManager;
 
     @Autowired

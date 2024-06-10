@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class User {
     private Gender gender;
 
     @Column(name = "dob")
-    private Instant dob;
+    private LocalDate dob;
 
     @Column(name = "email")
     private String email;
@@ -37,11 +38,11 @@ public class User {
     @Column(name="password")
     private String password;
 
-    @Column(name="created_at")
-    private Instant createdAt;
+    @Column(name="created_at", nullable = false)
+    private Instant createdAt = Instant.now();
 
     @Column(name="delete_flag")
-    private Boolean deleteFlag;
+    private Boolean deleteFlag = false;
 
     @OneToMany(mappedBy = "user", cascade = {
             CascadeType.DETACH,
@@ -51,7 +52,7 @@ public class User {
     })
     private List<RepairHistory> repairHistoryList = Collections.emptyList();
 
-    public User(String fullName, Gender gender, Instant dob, String email, String username, String password) {
+    public User(String fullName, Gender gender, LocalDate dob, String email, String password) {
         this.fullName = fullName;
         this.gender = gender;
         this.dob = dob;

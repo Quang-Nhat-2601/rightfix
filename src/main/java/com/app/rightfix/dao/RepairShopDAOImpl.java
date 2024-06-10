@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class RepairShopDAOImpl implements RepairShopDAO{
+public class RepairShopDAOImpl implements RepairShopDAO {
     private final EntityManager entityManager;
 
     @Autowired
@@ -30,7 +30,7 @@ public class RepairShopDAOImpl implements RepairShopDAO{
 
     @Override
     public List<RepairShop> findAll() {
-        return entityManager.createQuery("SELECT a FROM repair_shop a", RepairShop.class).getResultList();
+        return entityManager.createQuery("SELECT a FROM RepairShop a", RepairShop.class).getResultList();
     }
 
     @Override
@@ -44,6 +44,7 @@ public class RepairShopDAOImpl implements RepairShopDAO{
     public void delete(Long id) {
         entityManager.remove(id);
     }
+
     public RepairShop findRepairShopById(long id) {
         return entityManager.find(RepairShop.class, id);
     }

@@ -1,5 +1,6 @@
 package com.app.rightfix;
 
+import com.app.rightfix.dao.UserDAO;
 import com.app.rightfix.entity.Address;
 import com.app.rightfix.entity.RepairShop;
 import com.app.rightfix.entity.User;
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class RightfixApplication {
@@ -41,7 +43,7 @@ public class RightfixApplication {
 		User tempUser1 = new User(
 				"Le Quang Nhat",
 				Gender.MALE,
-				Instant.parse("2002-01-26T00:00:00.00Z"),
+				LocalDate.parse("2002-01-26"),
 				"quangnhat2601@gmail.com",
 				"coderga",
 				passwordEncoder.encode("12345"));
