@@ -18,9 +18,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import java.util.List;
-
-import static com.app.rightfix.constants.SecurityConstants.*;
+import static com.app.rightfix.constants.SecurityConstants.ACCEPT_ALL;
+import static com.app.rightfix.constants.SecurityConstants.PATTERN;
 
 @Configuration
 @EnableWebSecurity
@@ -64,9 +63,11 @@ public class SecurityConfiguration {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.addAllowedOrigin(ACCEPT_ALL);
-        config.setAllowedHeaders(List.of(JWT_HEADER, CACHE_CONTROL, CONTENT_TYPE));
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        config.addAllowedHeader(ACCEPT_ALL);
+        config.addAllowedMethod(ACCEPT_ALL);
         source.registerCorsConfiguration(PATTERN, config);
         return new CorsFilter(source);
+
     }
+
 }
