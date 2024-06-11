@@ -25,8 +25,8 @@ import static com.app.rightfix.constants.SecurityConstants.PATTERN;
 @EnableWebSecurity
 public class SecurityConfiguration {
     private final String[] WHITE_LIST = {
-            "auth/api/v1/login",
-            "user/api/v1/register"
+            "/auth/api/v1/login",
+            "/user/api/v1/register"
     };
     @Autowired
     private UserService userService;
