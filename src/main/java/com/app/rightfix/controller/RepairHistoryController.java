@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("repairhistory/api/v1")
+@CrossOrigin(origins = "*")
 public class RepairHistoryController {
     private final RepairHistoryService repairHistoryService;
 
