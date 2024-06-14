@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/address/api/v1")
+@CrossOrigin(origins = "*")
 public class AddressController {
 
     private final AddressService addressService;

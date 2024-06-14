@@ -18,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("auth/api/v1")
+@CrossOrigin(origins = "*")
 public class LoginController {
     @Autowired
     private JwtTokenProvider tokenProvider;
