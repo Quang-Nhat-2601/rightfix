@@ -38,7 +38,6 @@ public class SecurityConfiguration {
         http
                 .sessionManagement(customize -> customize.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(
                         (authorize) -> authorize
                                 .requestMatchers(WHITE_LIST).permitAll()

@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("repairshop/api/v1")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE})
 public class RepairShopController {
     private final RepairShopService repairShopService;
 
