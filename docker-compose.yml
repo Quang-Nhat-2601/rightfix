@@ -11,9 +11,17 @@ services:
     ports:
       - 5432:5432
 
-  adminer:
-    image: adminer
+  backend:
+    image: backend
+    build:
+      context: .
     restart: always
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: rightfix
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: password
     ports:
       - 8080:8080
 
