@@ -42,7 +42,8 @@ public class SecurityConfiguration {
                         (authorize) -> authorize
                                 .requestMatchers(WHITE_LIST).permitAll()
                                 .anyRequest().authenticated()
-                );
+                )
+                .httpBasic(Customizer.withDefaults());
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
@@ -51,18 +52,5 @@ public class SecurityConfiguration {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    @Bean
-    public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");  // Allow any origin
-        config.addAllowedHeader("*");  // Allow any header
-        config.addAllowedMethod("*");  // Allow any method
-        source.registerCorsConfiguration("/**", config);
-        return new CorsFilter(source);
-    }
-
 
 }
